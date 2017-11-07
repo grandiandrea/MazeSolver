@@ -1,10 +1,3 @@
-/*
-Si analizza i qualunque nodo != collegato allo 0; Poi vengono inseriti in una lista, la lista viene eseguita
-e vengono trovati per esempio tutti i nodi collegati al un nodo, allora quel nodo viene flaggato in quanto non attivo;
-viene ripetuto tutto in modo ricorsivo fino a floodare il labirinto. Quando un nodo collegato viene analizzato e la
-somma delle distanze e' minore di quella che gia' aveva in lista, viene aggiornata. Si somma la distanza  e si indica il nodo precedente
-
-*/
 import java.util.ArrayList;
 
 public class Dijkstra{
@@ -19,8 +12,6 @@ public class Dijkstra{
     nodi.add(new Nodo(0,0,true,0));
     nodiAdder(0, 0);
     queAdder();
-    //mi serve una funzione che prende tutti gli elementi collegati e li aggiunge in coda in ordine crescente di distanza
-
   }
   public void sort(){
     System.out.println("sort() initialized");
@@ -130,7 +121,6 @@ public class Dijkstra{
   }
 
   public int getDist(int n, int p){
-    //Bisogna trovare nella lista un nodo che ha l'id uguale alla path di n;
     int dist = 0;
     if(maze.nodes.get(n).south.id == p){
       dist = maze.nodes.get(n).south.distance;
