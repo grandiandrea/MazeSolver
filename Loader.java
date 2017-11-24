@@ -10,15 +10,20 @@ import java.awt.Graphics2D;
 
 public class Loader {
 	public static void main(String[] args) throws IOException{
-    BufferedImage image = ImageIO.read(new File("maze.png"));
-    byte[][] pixels = new byte[image.getWidth()][];
+		String fileN;
+		if(args.length != 0)
+			fileN = args[0];
+		else
+			fileN = "maze.png";
+		BufferedImage image = ImageIO.read(new File(fileN));
+		byte[][] pixels = new byte[image.getWidth()][];
 
-    for(int y = 0; y < image.getHeight(); y++){
-      pixels[y] = new byte[image.getWidth()];
-      for(int x = 0; x < image.getWidth(); x++){
-        pixels[y][x] = (byte) (image.getRGB(x, y) == 0xFFFFFFFF ? 0 : 1);
-      }
-    }
+		for(int y = 0; y < image.getHeight(); y++){
+		  pixels[y] = new byte[image.getWidth()];
+		  for(int x = 0; x < image.getWidth(); x++){
+		    pixels[y][x] = (byte) (image.getRGB(x, y) == 0xFFFFFFFF ? 0 : 1);
+		  }
+		}
 		/*for(int y = 0; y < pixels.length; y++){
 			System.out.printf("\n");
 			for(int x = 0; x < pixels[0].length; x++){
@@ -35,11 +40,14 @@ public class Loader {
 		Dijkstra test = new Dijkstra(labir);
 		test.sort();
 		System.out.println("pathfinding completed ");
-		labir.print();
+		//labir.print();
 		ImageWriter writer = new ImageWriter(out, test.trace, labir);
 		ImageIO.write(image, "png", writer.outputfile);
-
-
-
+		Ui(fileN);
+  }
+  public static void Ui(String fileN) throws IOException{
+  	BufferedImage image = ImageIO.read(new File(fileN));
+	BufferedImage image1 = ImageIO.read(new File("saved.png"));
+	new Gui1(image, image1);
   }
 }

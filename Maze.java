@@ -25,6 +25,10 @@ boolean flag = true;
     for(int y = 1; y < lab.length -1; y++){
       for(int x = 0; x < lab[0].length -1; x++){
         if(lab[y][x] == 0){
+           if(!((lab[y][x - 1] == 1 && lab[y][x + 1] == 1 && lab[y +1 ][x] == 0 && lab[y - 0][x] == 0) || (lab[y][x - 1] == 0 && lab[y][x + 1] == 0 && lab[y +1 ][x] == 1 && lab[y - 0][x] == 1))){
+            nodes.add(new NodeObj(new Pole(0,0), new Pole(0,0), new Pole(0,0), new Pole(0,0), x,y));
+          }
+          /*
           if(lab[y][x -1] == 1 && lab[y -1][x] == 1){
             nodes.add(new NodeObj(new Pole(0,0), new Pole(0,0), new Pole(0,0), new Pole(0,0), x,y));
           }
@@ -53,7 +57,7 @@ boolean flag = true;
             else if(lab[y][x +1] == 0 && lab[y][x -1] == 0 && lab[y +1][x] == 0 && lab[y -1][x] == 0){
               nodes.add(new NodeObj(new Pole(0,0), new Pole(0,0), new Pole(0,0), new Pole(0,0), x,y));
             }
-          }
+          }*/
 
         }
       }
