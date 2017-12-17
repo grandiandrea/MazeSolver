@@ -41,13 +41,19 @@ public class Loader {
 		test.sort();
 		System.out.println("pathfinding completed ");
 		//labir.print();
+		System.out.println("ImageWriter starting, please wait");
 		ImageWriter writer = new ImageWriter(out, test.trace, labir);
+		System.out.println("ImageWriter created, starting ImageIO");
 		ImageIO.write(image, "png", writer.outputfile);
+		System.out.println("ImageIO done. Starting UI");
 		Ui(fileN);
   }
   public static void Ui(String fileN) throws IOException{
+	System.out.println("UI: opening original lab image");
   	BufferedImage image = ImageIO.read(new File(fileN));
+	System.out.println("UI: opening resulting lab image");
 	BufferedImage image1 = ImageIO.read(new File("saved.png"));
+	System.out.println("UI: image loading completed, starting interface");
 	new Gui1(image, image1);
   }
 }
